@@ -1,16 +1,32 @@
 from django.db import models
-from django.contrib.auth.models import User  # Import the built-in User model
+from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 class Post(models.Model):
-    title = models.CharField(max_length=200)  # Title of the blog post
-    content = models.TextField()  # Content of the blog post
-    published_date = models.DateTimeField(auto_now_add=True)  # Automatically set to the current timestamp when created
-    author = models.ForeignKey(
-        User,  # Reference to Django's built-in User model
-        on_delete=models.CASCADE,  # Delete all posts by the user if the user is deleted
-        related_name='posts'  # Allows reverse lookup like user.posts.all()
-    )
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    tags = TaggableManager()
 
     def __str__(self):
-        return self.title  # String representation of the post, displays the title
+        return self.title
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(blank=True)
+    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True)
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
+
+class Comment(models.Model):
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Comment by {self.author} on {self.post.title}"
