@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'learning_db',
         'USER': 'db_user',  # Replace with your actual MySQL/MariaDB username
-        'PASSWORD': '1969',  # Replace with your actual MySQL/MariaDB password
+        'PASSWORD': '1969xx',  # Replace with your actual MySQL/MariaDB password
         'HOST': 'localhost',  # Typically 'localhost' if the database is on the same machine
         'PORT': '3306',  # Default port for MySQL/MariaDB
     }
@@ -126,3 +126,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'profile'
+LOGOUT_REDIRECT_URL = '/'
+
