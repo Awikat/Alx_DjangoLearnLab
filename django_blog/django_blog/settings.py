@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'learning_db',
         'USER': 'db_user',  # Replace with your actual MySQL/MariaDB username
-        'PASSWORD': '1969xx',  # Replace with your actual MySQL/MariaDB password
+        'PASSWORD': '1969',  # Replace with your actual MySQL/MariaDB password
         'HOST': 'localhost',  # Typically 'localhost' if the database is on the same machine
         'PORT': '3306',  # Default port for MySQL/MariaDB
     }
