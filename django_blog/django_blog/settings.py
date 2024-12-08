@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'learning_db',
+        'USER': 'db_user',  # Replace with your actual MySQL/MariaDB username
+        'PASSWORD': '1969',  # Replace with your actual MySQL/MariaDB password
+        'HOST': 'localhost',  # Typically 'localhost' if the database is on the same machine
+        'PORT': '3306',  # Default port for MySQL/MariaDB
     }
 }
 
