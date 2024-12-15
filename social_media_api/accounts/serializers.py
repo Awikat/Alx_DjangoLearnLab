@@ -39,4 +39,3 @@ class RegisterSerializer(serializers.ModelSerializer):
         # Automatically create an auth token for the new user
         Token.objects.create(user=user)
         return user
-
