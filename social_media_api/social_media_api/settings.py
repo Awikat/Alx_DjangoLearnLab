@@ -159,3 +159,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')
 
+import os
+
+PORT = os.environ.get('PORT', '8000')  # Default to port 8000 if PORT is not in the environment
+
